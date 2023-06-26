@@ -18,6 +18,10 @@ export class PrismaUsersRepository implements UsersRepository {
       },
     });
 
+    if (user) {
+      throw new Error("E-mail already exists");
+    }
+
     return user;
   }
 }
