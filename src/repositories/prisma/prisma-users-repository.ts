@@ -1,6 +1,7 @@
 import { prisma } from "@/lib/prisma";
 import { Prisma } from "@prisma/client";
 import { UsersRepository } from "../users-repository";
+import { UserAlreadyExistError } from "@/use-cases/errors/user-already-exist-error";
 
 export class PrismaUsersRepository implements UsersRepository {
   async create(data: Prisma.UserCreateInput) {
@@ -19,7 +20,7 @@ export class PrismaUsersRepository implements UsersRepository {
     });
 
     if (user) {
-      throw new Error("E-mail already exists");
+      throw new UserAlreadyExistError();
     }
 
     return user;
