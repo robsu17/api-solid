@@ -1,7 +1,6 @@
 import { prisma } from "@/lib/prisma";
 import { Prisma } from "@prisma/client";
 import { UsersRepository } from "../users-repository";
-import { UserAlreadyExistError } from "@/use-cases/errors/user-already-exist-error";
 
 export class PrismaUsersRepository implements UsersRepository {
   async create(data: Prisma.UserCreateInput) {
@@ -13,16 +12,11 @@ export class PrismaUsersRepository implements UsersRepository {
   }
 
   async findByEmail(email: string) {
-    const user = await prisma.user.findUnique({
+    const userSameWithEmail = await prisma.user.findUnique({
       where: {
         email,
       },
     });
-
-    if (user) {
-      throw new UserAlreadyExistError();
-    }
-
-    return user;
+    return userSameWithEmail;
   }
 }
