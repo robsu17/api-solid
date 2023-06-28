@@ -1,5 +1,5 @@
-import { RepositoryFactory } from "@/factory-repository/factoryRepository";
 import { InvalidCredentialsError } from "@/use-cases/errors/invalid-credentials-error";
+import { makeAuthenticateUseCase } from "@/use-cases/factories/make-authenticate-use-case";
 import { FastifyRequest, FastifyReply } from "fastify";
 import { z } from "zod";
 
@@ -15,8 +15,8 @@ export async function authenticate(
   const { email, password } = authenticateBodySchema.parse(request.body);
 
   try {
-    const repositories = new RepositoryFactory();
-    await repositories.authenticate({
+    const authenticateUseCase = makeAuthenticateUseCase();
+    await authenticateUseCase.execute({
       email,
       password,
     });
