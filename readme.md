@@ -18,7 +18,7 @@ GymPass Style app
 ## RNs (Regras de negócio)
 
 - [x] O usuário não deve poder se cadastrar com um e-mail duplicado
-- [ ] O usuário não pode fazer 2 checkins no mesmo dia
+- [x] O usuário não pode fazer 2 checkins no mesmo dia
 - [ ] O usuário não pode fazer checkin se não estiver perto (100m) da academia
 - [ ] O checkin só pode ser validado até 20 mins após criado
 - [ ] O checkin só pode ser validado por administradores
