@@ -11,7 +11,7 @@ GymPass Style app
 - [ ] Deve ser possível o usuário obter seu histórico de checkin
 - [ ] Deve ser possível o usuário buscar academias próximas
 - [ ] Deve ser possível o usuário buscar academias pelo nome
-- [ ] Deve ser possível o usuário realizar chekin em uma academia
+- [x] Deve ser possível o usuário realizar chekin em uma academia
 - [ ] Deve ser possível validar o checkin de um usuário
 - [ ] Deve ser possível cadastrar uma academia
 
@@ -28,4 +28,5 @@ GymPass Style app
 
 - [x] A senha do usuário precisa estar criptografada
 - [x] Os dados da aplicação precisam estar persistidos em um banco PostgreSQL
+- [ ] Todas as listas de dados precisam estar paginadas com 20 itens por página
 - [ ] O usuário deve ser identificado por um JWT (JSON WEb Token)
