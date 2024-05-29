@@ -16,13 +16,13 @@ describe('Check-In Use Case', () => {
     gymsRepository = new InMemoryGymsRepository()
     sut = new CheckInUseCase(checkInsRepository, gymsRepository)
 
-    gymsRepository.items.push({
+    gymsRepository.create({
       id: 'gym-01',
       title: 'Javascript Gym',
       description: '',
       phone: '',
-      latitude: new Decimal(-3.6866326),
-      longitude: new Decimal(-40.3481814),
+      latitude: new Decimal(-3.6867),
+      longitude: new Decimal(-40.3481),
     })
 
     vi.useFakeTimers()
@@ -36,8 +36,8 @@ describe('Check-In Use Case', () => {
     const { checkin } = await sut.execute({
       gymId: 'gym-01',
       userId: 'userId-01',
-      userLatitude: -3.6866326,
-      userLongitudade: -40.3481814,
+      userLatitude: -3.6867,
+      userLongitude: -40.3481,
     })
 
     expect(checkin.id).toEqual(expect.any(String))
@@ -50,7 +50,7 @@ describe('Check-In Use Case', () => {
       gymId: 'gym-01',
       userId: 'userId-01',
       userLatitude: -3.6866326,
-      userLongitudade: -40.3481814,
+      userLongitude: -40.3481814,
     })
 
     await expect(() =>
@@ -58,7 +58,7 @@ describe('Check-In Use Case', () => {
         gymId: 'gym-01',
         userId: 'userId-01',
         userLatitude: -3.6866326,
-        userLongitudade: -40.3481814,
+        userLongitude: -40.3481814,
       }),
     ).rejects.toBeInstanceOf(Error)
   })
@@ -70,7 +70,7 @@ describe('Check-In Use Case', () => {
       gymId: 'gym-01',
       userId: 'userId-01',
       userLatitude: -3.6866326,
-      userLongitudade: -40.3481814,
+      userLongitude: -40.3481814,
     })
 
     vi.setSystemTime(new Date(2022, 0, 18, 8, 0, 0))
@@ -79,14 +79,14 @@ describe('Check-In Use Case', () => {
       gymId: 'gym-01',
       userId: 'userId-01',
       userLatitude: -3.6866326,
-      userLongitudade: -40.3481814,
+      userLongitude: -40.3481814,
     })
 
     expect(checkin.id).toEqual(expect.any(String))
   })
 
   it('should be able to create check in on distant gym', async () => {
-    gymsRepository.items.push({
+    gymsRepository.create({
       id: 'gym-01',
       title: 'Javascript Gym',
       description: '',
@@ -100,7 +100,7 @@ describe('Check-In Use Case', () => {
         gymId: 'gym-01',
         userId: 'userId-01',
         userLatitude: -3.6866326,
-        userLongitudade: -40.3481814,
+        userLongitude: -40.3481814,
       }),
     )
   })
