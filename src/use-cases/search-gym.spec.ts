@@ -29,13 +29,13 @@ describe('Fetch User Check Ins History Use Case', () => {
       longitude: -40.3481814,
     })
 
-    const { gym } = await sut.execute({
+    const { gyms } = await sut.execute({
       query: 'JavaScript',
       page: 1,
     })
 
-    expect(gym).toHaveLength(1)
-    expect(gym).toEqual([expect.objectContaining({ title: 'JavaScript Gym' })])
+    expect(gyms).toHaveLength(1)
+    expect(gyms).toEqual([expect.objectContaining({ title: 'JavaScript Gym' })])
   })
 
   it('should be able to fetch paginated gyms search', async () => {
@@ -49,13 +49,13 @@ describe('Fetch User Check Ins History Use Case', () => {
       })
     }
 
-    const { gym } = await sut.execute({
+    const { gyms } = await sut.execute({
       query: 'TypeScript',
       page: 2,
     })
 
-    expect(gym).toHaveLength(2)
-    expect(gym).toEqual([
+    expect(gyms).toHaveLength(2)
+    expect(gyms).toEqual([
       expect.objectContaining({ title: 'TypeScript Gym 21' }),
       expect.objectContaining({ title: 'TypeScript Gym 22' }),
     ])
