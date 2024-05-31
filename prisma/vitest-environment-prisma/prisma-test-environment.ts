@@ -17,6 +17,15 @@ function generateDatabaseURL(schema: string) {
   return url.toString()
 }
 
+async function runMigrations() {
+  try {
+    execSync('npx prisma migrate deploy')
+  } catch (error) {
+    console.error('Error running migrations:', error)
+    throw error
+  }
+}
+
 const prisma = new PrismaClient()
 
 export default <Environment>{
@@ -28,7 +37,7 @@ export default <Environment>{
 
     process.env.DATABASE_URL = databaseURL
 
-    execSync('npx prisma migrate deploy')
+    await runMigrations()
 
     return {
       async teardown() {
