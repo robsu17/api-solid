@@ -9,7 +9,7 @@ describe('Search Gym (e2e)', () => {
   beforeAll(async () => {
     await app.ready()
 
-    token = await createAndAuthenticateUser()
+    token = await createAndAuthenticateUser(app, true)
   })
 
   afterAll(async () => {

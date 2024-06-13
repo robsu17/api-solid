@@ -10,7 +10,7 @@ describe('Metrics (e2e)', () => {
   beforeAll(async () => {
     await app.ready()
 
-    token = await createAndAuthenticateUser()
+    token = await createAndAuthenticateUser(app)
   })
 
   afterAll(async () => {
